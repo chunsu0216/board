@@ -10,6 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+
 <title>Start Simple Web</title>
 
 <!-- Bootstrap Core CSS -->
@@ -38,7 +39,7 @@
     <![endif]-->
 </head>
 <body style="background-image: url(img/back.jpg)">
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
 
 	<div class="container" style="margin-top: 120px">
