@@ -38,29 +38,32 @@
     <![endif]-->
 </head>
 <body style="background-image: url(img/back.jpg)">
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="/board/js/member.js" charset="UTF-8"></script>
+<script type="text/javascript">
+</script>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="container" style="margin-top: 120px">
 		<div class="row">
 			<div class="main">
 				<h3>
-					SAMPLE SIGN IN</a>
+					<a>SAMPLE SIGN IN</a>
 				</h3>
 
-				<form role="form">
+				<form name="login">
 					<div class="form-group">
 						<input type="text" placeholder="ID " class="form-control"
-							id="inputUsernameEmail name=" email"/>
+							id="id" name="id"/>
 
 					</div>
 					<div class="form-group">
 						<!--<a class="pull-right" href="#">Esqueci a senha</a>-->
 						<input type="password" placeholder="PASSWORD " class="form-control"
-							id="inputPassword name=" nome"/>
+							id="password" name="password">
 					</div>
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12">
-							<a href="#" class="btn btn-sm btn-danger btn-block">SIGN IN</a>
+							<a href="#" id="signin" class="btn btn-sm btn-danger btn-block">SIGN IN</a>
 						</div>
 					</div>
 					<div class="login-or">
@@ -75,11 +78,10 @@
 					<h6 style="font-weight: 400;font-size: 0.85714rem; color: gray " align="center">
 						비밀번호가 기억나지 않으세요? <u><a href="#">비밀번호재설정</a></u>
 					</h6>
-				</div>
 				</form>
+				</div>
 			</div>
 		</div>
-	</div>
 	<!-- Footer -->
 	<!-- 	<footer>
 	<div class="container">

@@ -40,47 +40,52 @@
 </head>
 <body style="background-image: url(img/back.jpg)">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="/board/js/member.js" charset="UTF-8"></script>
+<script type="text/javascript">
+</script>
 <jsp:include page="header.jsp"></jsp:include>
 
 	<div class="container" style="margin-top: 120px">
 		<div class="row">
 			<div class="main">
 				<h3>
-					SAMPLE SIGN UP</a>
+					SAMPLE SIGN UP
 				</h3>
 
-				<form role="form">
+				<form name="login" method="post" action="idCheck.jsp">
 					<div class="form-group">
-						<input type="text" placeholder="아이디 또는 이메일" class="form-control"
-							id="inputUsernameEmail name=" email"/>
+						<input type="text" name="id" placeholder="아이디 또는 이메일" class="form-control"
+							id="id"/>
 
 					</div>
 					<div class="form-group">
-						<input type="text" placeholder="이름(별명)" class="form-control"
-							id="inputUsernameEmail name=" email"/>
+						<input type="text" name="name" placeholder="이름(별명)" class="form-control"
+							id="name"/>
 
 					</div>
 					<div class="form-group">
-						<input type="text" placeholder="비밀번호" class="form-control"
-							id="inputUsernameEmail name=" email"/>
+						<input type="password" name="password1" placeholder="비밀번호(9자리이상)" class="form-control"
+							id="password1"/>
 
 					</div>
 					<div class="form-group">
 						<!--<a class="pull-right" href="#">Esqueci a senha</a>-->
-						<input type="password" placeholder="비밀번호 확인" class="form-control"
-							id="inputPassword name=" nome"/>
+						<input type="password" name="password2" placeholder="비밀번호 확인" class="form-control"
+							id="password2"/>
+						<input type="hidden" name="password" id="password">
 					</div>
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12">
-							<a href="#" class="btn btn-sm btn-info btn-block">SIGN UP</a>
+							<a href="#" id="send" class="btn btn-sm btn-info btn-block" >SIGN UP</a>
 						</div>
 					</div>
+					<div>
 					<h6 style="font-weight: 400;font-size: 0.85714rem; color: gray " align="center">
 						회원가입을 클릭함으로써 <u><br><a
 							href="#">사용약관</a></u> 및 <u><a
 							href="#">개인정보취급방침</a></u> 에 동의합니다.
 					</h6>
-			</div>
+					</div>
 			</form>
 		</div>
 	</div>
