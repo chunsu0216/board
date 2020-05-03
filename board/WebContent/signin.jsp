@@ -42,7 +42,7 @@
 <script type="text/javascript" src="/board/js/member.js" charset="UTF-8"></script>
 <script type="text/javascript">
 </script>
-	<jsp:include page="header.jsp"></jsp:include>
+	<%-- <jsp:include page="header.jsp"></jsp:include> --%>
 	<div class="container" style="margin-top: 120px">
 		<div class="row">
 			<div class="main">
@@ -50,9 +50,9 @@
 					<a>SAMPLE SIGN IN</a>
 				</h3>
 
-				<form name="login">
+				<form name="login" method="oost" action="loginAction.jsp">
 					<div class="form-group">
-						<input type="text" placeholder="ID " class="form-control"
+						<input type="text" placeholder="ID" class="form-control"
 							id="id" name="id"/>
 
 					</div>

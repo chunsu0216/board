@@ -9,6 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <insert id="insertMember" parameterType="board.com.model.BMemberBean">
   	INSERT INTO BMEMBER(ID,NAME,PASSWORD) VALUES(#{id},#{name},#{password})
   </insert>
+  <select id="memberLoginCheck" parameterType="java.lang.String" resultType="java.lang.String">
+  	SELECT PASSWORD FROM BMEMBER WHERE ID=#{VALUE}
+  </select>
 </mapper>
 
 

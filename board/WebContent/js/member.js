@@ -21,10 +21,19 @@ $(function(){
 			return false;
 		}
 		$("input#password").val($("input#password2").val());
-		document.login.submit();
+		document.join.submit();
 	});
-	//로그인
+	//로그인 처리
 	$("a#signin").click(function(){
-		alert('test');
+		if($("input#id").val()==""){
+			alert("아이디 입력하세요");
+			$("input#id").focus();
+			return false;
+		}else if($("input#password").val()==""){
+			alert("비밀번호 입력하세요");
+			$("input#password").focus();
+			return false;
+		}
+		document.login.submit();
 	});
 });

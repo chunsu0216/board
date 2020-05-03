@@ -43,7 +43,7 @@
 <script type="text/javascript" src="/board/js/member.js" charset="UTF-8"></script>
 <script type="text/javascript">
 </script>
-<jsp:include page="header.jsp"></jsp:include>
+<%-- <jsp:include page="header.jsp"></jsp:include> --%>
 
 	<div class="container" style="margin-top: 120px">
 		<div class="row">
@@ -52,7 +52,7 @@
 					SAMPLE SIGN UP
 				</h3>
 
-				<form name="login" method="post" action="idCheck.jsp">
+				<form name="join" method="post" action="idCheck.jsp">
 					<div class="form-group">
 						<input type="text" name="id" placeholder="아이디 또는 이메일" class="form-control"
 							id="id"/>
