@@ -287,6 +287,8 @@ p {
 }
 </style>
 </head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="/board/js/member.js" charset="UTF-8"></script>
 <body>
 <%
 	String id = (String)session.getAttribute("id");
@@ -348,12 +350,12 @@ p {
 			</div>
 		</div>
 	</header>
-	<form action="">
+	<form name="boardFrm" action="boardInsert.jsp" method="post">
 	<div id="write-field">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<table>
-				<tr>
+			<!-- 	<tr>
 					<td class="td1">카테고리</td>
 					<td class="td2"><select name="category" class="form-control"
 						style="display: inline-block;">
@@ -364,21 +366,21 @@ p {
 							<option value="카테고리3">ㆍ카테고리3(0)</option>
 					</select></td>
 				</tr>
-
+ -->
 				<tr>
 					<td class="td2" colspan="2">
 						<div class="row row-xs-bskr">
 							<div class="col-md-6 col-sm-6 col-xs-bskr">
 								<div class="input-title" >작성자명</div>
 								<div class="input-forms">
-									<input size="20" type="text" name="name" value="<%=id %>"
+									<input size="20" type="text" name="id" id="id"value="<%=id %>"
 										class="form-control input-sm input-name bskr-font user" readonly="readonly" />
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-bskr">
 								<div class="input-title">비밀번호</div>
 								<div class="input-forms">
-									<input size="20" type="password" name="pw" value=""
+									<input size="20" type="password" name="password" id="boardPassword" value=""
 										class="form-control input-sm input-pwd bskr-font user" />
 								</div>
 							</div>
@@ -390,7 +392,7 @@ p {
 				<tr>
 					<td class="td1">제목</td>
 					<td class="td2" valign="middle"><input type="text"
-						name="subject" value=""
+						name="title" id="title" value=""
 						class="form-control input-sm bskr-font subject" /></td>
 				</tr>
 
@@ -400,12 +402,12 @@ p {
 				<table>
 					<tr>
 						<td class="td1"></td>
-						<td calss="td2"><textarea class="form-control col-sm-5"
-								rows="20"></textarea></td>
+						<td class="td2"><textarea class="form-control col-sm-5"
+								rows="20" name="contents" id="contents"></textarea></td>
 					</tr>
 					<tr>
 					<td class="td1"></td>
-						<td class="td2"><input type="file" id="InputFile"></td>
+						<td class="td2"><input type="file" id="filename" name="filename"></td>
 					</tr>
 				</table>
 			</div>
@@ -413,7 +415,7 @@ p {
 			<div class="bottombox">
 				<input type="button" value="취소" class="btn btn-default btn-sm"
 					onclick="return cancelCheck();" />&nbsp;
-				<button id="submitPost" type="submit" class="btn btn-primary btn-sm">
+				<button id="submitPost" type="" class="btn btn-primary btn-sm">
 					<i class="glyphicon glyphicon-ok"></i> 확인
 				</button>
 			</div>

@@ -12,6 +12,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="memberLoginCheck" parameterType="java.lang.String" resultType="java.lang.String">
   	SELECT PASSWORD FROM BMEMBER WHERE ID=#{VALUE}
   </select>
+  <insert id="boardInsert" parameterType="board.com.model.BoardBean">
+  	INSERT INTO BOARD(NO,ID,PASSWORD,TITLE,CONTENTS,FILENAME,REGDATE) VALUES(BOARD_SEQ.NEXTVAL,#{id},#{password},#{title},#{contents},#{filename},SYSDATE)
+  </insert>
+  <select id="selectList" resultType="board.com.model.BoardBean">
+  	SELECT NO,ID,TITLE,REGDATE FROM BOARD ORDER BY NO DESC
+  </select>
+  <select id="infoBoard" parameterType="java.lang.Integer" resultType="board.com.model.BoardBean">
+  	SELECT ID,TITLE,CONTENTS,REGDATE FROM BOARD WHERE NO=#{VALUE}
+  </select>
 </mapper>
 
 

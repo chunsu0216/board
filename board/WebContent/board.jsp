@@ -1,3 +1,6 @@
+<%@page import="board.com.dao.BoardDao"%>
+<%@page import="board.com.model.BoardBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC >
@@ -24,7 +27,7 @@
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link
-	href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic'
+	href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,70italic'
 	rel='stylesheet' type='text/css'>
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
@@ -38,12 +41,15 @@
     <![endif]-->
 
 </head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="/board/js/member.js" charset="UTF-8"></script>
 <body>
 <%
+	response.setCharacterEncoding("EUC-KR");
 	String id = (String)session.getAttribute("id");
+	List<BoardBean>list = BoardDao.selectList();
 %>
 <%=id %>
-
 <%-- <jsp:include page="header.jsp"></jsp:include> --%>
 <!-- Navigation -->
 	<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -67,12 +73,12 @@
 					if(id != null){
 				%>
 					<li><a href="board.jsp">Board</a></li>
-					<li><a href="board.jsp">LogOut<%-- <%session.removeAttribute("id");%> --%></a></li>
+					<li><a href="board.jsp">LogOut</a><%-- <%session.removeAttribute("id");%> --%></li>
 					<li><a href="mypage.jsp">Mypage</a></li>
 				<%
 					}else{
 				%>
-					<li><a href="board.jsp">Board</a></li>
+					<li><a href="board.jsp">Board</a></li>b
 					<li><a href="signin.jsp">LogIn</a></li>
 				<%
 					}
@@ -119,23 +125,27 @@
 					}
 				%>
 			</div>
+			<%
+				for(int i = 0; i < list.size(); i++){
+					BoardBean boardBean = list.get(i);
+			%>
 			<div class="list-group">
 
-				<a href="info.jsp" class="list-group-item">
+				<a href="info.jsp?no=<%=boardBean.getNo() %>" class="list-group-item">
 					<div class="board-title">
-						<span class="board-category">[ALGORITHM]</span>
-							버블정렬  <span class="badge">New</span>
+							<%=boardBean.getTitle() %>  <!-- <span class="badge">New</span> -->
 					</div>
 					<div class="board-meta"
 						style="font-weight: 400; font-size: 1.2rem; color: #404040">
 						<p>
-							<i class="glyphicon glyphicon-user"></i> 미립 님 <i
+							<i class="glyphicon glyphicon-user"></i> <%=boardBean.getId() %> 님 <i
 								class="glyphicon glyphicon-comment"></i> 0 <i
 								class="glyphicon glyphicon-ok"></i> 20 <i
-								class="glyphicon glyphicon-time"></i> 2016.03.31 21:55
+								class="glyphicon glyphicon-time"></i> <%=boardBean.getRegdate() %>
 						</p>
 					</div>
-				</a>
+ 				</a>
+ 		<!-- 
 				<a href="info.jsp" class="list-group-item">
 					<div class="board-title">
 						<span class="board-category">[JAVASCRIPT]</span>
@@ -211,7 +221,10 @@
 						</p>
 					</div>
 				</a>
-			</div>
+			</div> -->
+			<%
+				}
+			%>
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<ul class="pagination">

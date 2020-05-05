@@ -13,7 +13,7 @@ $(function(){
 			$("input#password1").focus();
 			return false;
 		}
-		if(($("input#password2").val().length < 10)){
+		if(($("input#password2").val().length < 9)){
 			alert("형식에 맞춰 비밀번호를 작성해주세요");
 			$("input#password1").val("");
 			$("input#password2").val("");
@@ -35,5 +35,22 @@ $(function(){
 			return false;
 		}
 		document.login.submit();
+	});
+	//글쓰기 처리
+	$("button#submitPost").click(function(){
+		if($("input#boardPassword").val()==""){
+			alert("비밀번호입력하세요");
+			$("input#password").focus();
+			return false;
+		}else if($("input#title").val()==""){
+			alert("제목을 입력하세요");
+			$("input#title").focus();
+			return false;
+		}else if($("textarea#contents").val()==""){
+			alert("내용을 입력하세요");
+			$("textarea#contents").focus();
+			return false;
+		}
+		document.boardFrm.submit();
 	});
 });

@@ -1,3 +1,5 @@
+<%@page import="board.com.model.BoardBean"%>
+<%@page import="board.com.dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC >
@@ -39,8 +41,51 @@
 
 </head>
 <body>
+<%
+	response.setCharacterEncoding("EUC-KR");
+	String id = (String)session.getAttribute("id");
+	int no = Integer.parseInt(request.getParameter("no"));
+	BoardBean bean = BoardDao.infoBoard(no);
+%>
+<%=id %>
+<%-- <jsp:include page="header.jsp"></jsp:include> --%>
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="signin.jsp">Start Simple Web</a>
+			</div>
 
-<jsp:include page="header.jsp"></jsp:include>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+				<%
+					if(id != null){
+				%>
+					<li><a href="board.jsp">Board</a></li>
+					<li><a href="board.jsp">LogOut</a><%-- <%session.removeAttribute("id");%> --%></li>
+					<li><a href="mypage.jsp">Mypage</a></li>
+				<%
+					}else{
+				%>
+					<li><a href="board.jsp">Board</a></li>b
+					<li><a href="signin.jsp">LogIn</a></li>
+				<%
+					}
+				%>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
 
 
 	<!-- Page Header -->
@@ -59,20 +104,22 @@
 			</div>
 		</div>
 	</header>
+	<%
+		
+	%>
 	<div class="board-field">
 		<div class="list-group">
 			<div class="list-group-item board-title">
 				<div class="board-title">
-					<span class="board-category">[JAVASCRIPT]</span><a href="#">
-						스크립트 태그를 마지막에 쓰는 이유 </a> 
+				<a href="#"><%=bean.getTitle() %> </a> 
 				</div>
 				<div class="board-meta"
 					style="font-weight: 400; font-size: 1.2rem; color: #404040">
 					<p>
-						<i class="glyphicon glyphicon-user"></i> 미립 님 
+						<i class="glyphicon glyphicon-user"></i> <%=bean.getId() %> 님 
 						<i class="glyphicon glyphicon-comment"></i> 0
 						<i class="glyphicon glyphicon-ok"></i> 20 
-						<i class="glyphicon glyphicon-time"></i> 2016.03.31 21:55
+						<i class="glyphicon glyphicon-time"></i> <%=bean.getRegdate() %>
 					    <i class="glyphicon glyphicon-thumbs-up"></i> 0
 						<i class="glyphicon glyphicon-thumbs-down"></i> 0
 					</p>
@@ -80,11 +127,7 @@
 				<div class="clear"></div>
 			</div>
 			<div class="list-group-item">
-				<span class="board-contents"> 브라우저가 HTML 문서를 해석(Parsing) 할 때
-					script 태그를 만나면 HTML의 해석을 멈추고 JavaScript 를 처리하게 됩니다. 이때 사용자 입장에서는
-					페이지가 화면에 다 그려지기까지 더 큰 시간을 요구 하므로 CSS와 HTML 해석이 먼저 완료되고 나서
-					JavaScript 가 수행되는 것이 더 빠르게 느껴질 수 있습니다. 따라서 스크립트 태그를 가장 나중에(body
-					직전)에 작성하는 것을 권장합니다. </span>
+				<span class="board-contents"><%=bean.getContents() %></span>
 				<p style="text-align: center; margin-top: 30px">
 					<button class="btn btn-success">
 						<i class="glyphicon glyphicon-thumbs-up"></i>공감
